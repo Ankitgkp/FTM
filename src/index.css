@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* Subtle gradient animations for data fetching indicators */
+@keyframes subtle-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.data-fetching-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Humidity card animation with blue/cyan tint */
+.data-fetching-animation.humidity-theme::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(6, 182, 212, 0.05) 25%,
+    rgba(14, 165, 233, 0.08) 50%,
+    rgba(6, 182, 212, 0.05) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: subtle-shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Temperature card animation with orange/red tint */
+.data-fetching-animation.temperature-theme::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(251, 146, 60, 0.05) 25%,
+    rgba(239, 68, 68, 0.08) 50%,
+    rgba(251, 146, 60, 0.05) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: subtle-shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gentle-pulse-animation {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
