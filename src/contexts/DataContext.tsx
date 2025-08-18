@@ -22,6 +22,17 @@ interface SensorData {
   Lng?: number; // GPS Longitude
   Battery?: number; // Battery voltage
   Heading?: number; // Compass heading
+  // New data format
+  acc_ms2?: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  gyro_dps?: {
+    x: number;
+    y: number;
+    z: number;
+  };
 }
 
 interface DataContextType {
@@ -60,7 +71,7 @@ export const DataProvider = ({ children }: DataProviderProps) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://10.145.252.59/data");
+      const response = await fetch("http://10.126.159.59/data");
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -69,6 +80,9 @@ export const DataProvider = ({ children }: DataProviderProps) => {
       const data = await response.json();
       console.log("Sensor Data:", data);
       console.log("Humidity Data:", data.RH);
+      console.log("Temperature Data:", data.T);
+      console.log("Accelerometer Data:", data.acc_ms2);
+      console.log("Gyroscope Data:", data.gyro_dps);
 
       // Check for connection state change - only on FIRST connection or reconnection
       if (!isConnected || (!firstDataReceived && !isConnected)) {

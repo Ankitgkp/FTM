@@ -15,6 +15,9 @@ import ThrustCurve from "./components/ThrustCurve/ThrustCurve";
 import BatteryVoltage from "./components/BatteryVoltage/BatteryVoltage";
 import GPSCoordinate from "./components/GPSCoordinate/GPSCoordinate";
 import Compass from "./components/Compass/Compass";
+import AccelerometerXYZ from "./components/AccelerometerXYZ/AccelerometerXYZ";
+import GyroscopeXYZ from "./components/GyroscopeXYZ/GyroscopeXYZ";
+import RocketOrientation from "./components/RocketOrientation/RocketOrientation";
 
 function Dashboard() {
   const [activeSection, setActiveSection] = useState("dashboard");
@@ -71,10 +74,16 @@ function Dashboard() {
                   <Velocity />
                   <Pressure />
                 </div>
+                {/* New XYZ Components */}
+                <div className="grid grid-cols-2 gap-2">
+                  <AccelerometerXYZ />
+                  <GyroscopeXYZ />
+                </div>
               </div>
 
               {/* Right Panel - Navigation & Events */}
               <div className="col-span-3 space-y-2">
+                <RocketOrientation />
                 <TimeEvents />
                 <Compass />
                 <div className="grid grid-cols-1 gap-2">
@@ -99,6 +108,13 @@ function Dashboard() {
               <Pressure />
               <Altitude />
               <BatteryVoltage />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <AccelerometerXYZ />
+              <GyroscopeXYZ />
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              <RocketOrientation />
             </div>
           </div>
         );

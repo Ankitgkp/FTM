@@ -35,7 +35,6 @@ const Humidity = () => {
 
   const humidityStatus = getHumidityStatus(currentHumidity);
 
-
   const showAnimation = isConnected && firstDataReceived;
 
   return (
